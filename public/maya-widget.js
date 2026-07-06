@@ -26,6 +26,7 @@
   // ---- Host + Shadow root -------------------------------------------------
   var host = document.createElement("div");
   host.id = "maya-widget-host";
+  host.setAttribute("data-lenis-prevent", ""); // let the chat scroll even under Lenis smooth-scroll
   document.body.appendChild(host);
   var root = host.attachShadow({ mode: "open" });
 
@@ -60,7 +61,7 @@
 .hbtns{display:flex;gap:6px;flex:0 0 auto}\
 .hbtn{background:rgba(255,255,255,.14);border:none;color:#fff;width:30px;height:30px;border-radius:9px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s}\
 .hbtn:hover{background:rgba(255,255,255,.28)}.hbtn svg{width:16px;height:16px}\
-.body{flex:1;overflow-y:auto;padding:18px 15px 8px;background:#FAF7F6;display:flex;flex-direction:column;gap:12px}\
+.body{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:18px 15px 8px;background:#FAF7F6;display:flex;flex-direction:column;gap:12px}\
 .row{display:flex;gap:9px;align-items:flex-end;max-width:100%}\
 .row.u{flex-direction:row-reverse}\
 .mav{width:28px;height:28px;border-radius:50%;flex:0 0 auto;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.12)}\
@@ -201,4 +202,12 @@
   }
   hd.addEventListener("pointerup",endDrag);
   hd.addEventListener("pointercancel",endDrag);
+
+  // ---- Wheel over the conversation scrolls the chat, not the page --------
+  body.addEventListener("wheel",function(e){
+    var d = e.deltaMode===1 ? e.deltaY*16 : (e.deltaMode===2 ? e.deltaY*body.clientHeight : e.deltaY);
+    body.scrollTop += d;
+    e.preventDefault();
+    e.stopPropagation();
+  },{passive:false});
 })();
