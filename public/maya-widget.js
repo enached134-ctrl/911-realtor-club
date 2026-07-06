@@ -85,7 +85,7 @@
 .send:disabled{opacity:.45;cursor:default}.send svg{width:19px;height:19px}\
 .disc{font-size:10px;color:#a08f8b;line-height:1.35;margin-top:7px;text-align:center}\
 .body::-webkit-scrollbar{width:7px}.body::-webkit-scrollbar-thumb{background:#e3cfcc;border-radius:8px}\
-@media(max-width:480px){.panel{width:100vw;height:100vh;max-height:100vh;bottom:0;right:0;border-radius:0}.wrap{bottom:16px;right:16px}}\
+@media(max-width:480px){.panel{width:auto;max-width:none;height:auto;max-height:none;left:11px;right:11px;top:16px;bottom:14px;border-radius:18px}.hd{padding:12px 12px 12px 14px}.hav{width:40px;height:40px}.who b{font-size:15.5px}.wrap{bottom:14px;right:14px}.fab{padding:7px 17px 7px 7px;font-size:14.5px}.fab .pav{width:40px;height:40px}}\
 ";
 
   var SEND_ICON = "<svg viewBox='0 0 24 24' fill='none'><path d='M4 12 20 4l-6 16-3.5-6.5L4 12Z' stroke='#fff' stroke-width='2' stroke-linejoin='round' stroke-linecap='round'/></svg>";
